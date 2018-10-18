@@ -78,7 +78,7 @@ static ExtentReports extent = new ExtentReports("C:\\Users\\Admin\\Desktop\\repo
 	
 	@After
 	public void tearDown() {
-		driver.quit();
+		//driver.quit();
 }
 	
 	@AfterClass
