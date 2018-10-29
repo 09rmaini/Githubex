@@ -1,0 +1,141 @@
+import React, { Component } from 'react';
+
+import './App.css';
+
+class App extends Component {
+
+state= {
+    value: null,
+    displayValue: '0',
+    waitingForOperand: false,
+    operator: null
+  }
+
+  inputDigit(digit) {
+    const {displayValue, waitingForOperand} =this.state
+
+
+    if (waitingForOperand) {
+      this.setState({
+        displayValue: String(digit),
+        waitingForOperand: false
+      })
+
+
+    }
+    else {
+    this.setState({
+      displayValue:  displayValue === '0' ? String(digit) //if display
+      // value is zero, replace with first number that is pressed
+      //else:
+      
+      :
+        displayValue + String(digit)
+      
+      
+    })
+  }
+}
+
+  performOperation(nextOperation) {
+      const {displayValue, operator, value} = this.state
+      const nextValue= parseFloat(displayValue)
+
+      const operation = {
+        '/': (prevValue, nextValue) => prevValue/nextValue,
+        '*': (prevValue, nextValue) => prevValue*nextValue,
+        '+': (prevValue, nextValue) => prevValue+nextValue,
+        '-': (prevValue, nextValue) => prevValue-nextValue,
+        '=': (prevValue, nextValue) => nextValue
+      }
+
+      if(value == null) {
+        //no previous value, hit an operation key
+        this.setState({
+          value: nextValue
+        })
+      } else if (operator) {
+        const currentValue = value || 0
+        const computedValue = operation[operator](currentValue, nextValue)
+
+
+      this.setState({
+        value: computedValue,
+        displayValue: String(computedValue)
+      })  
+      }
+
+     
+
+
+
+
+    this.setState({
+      waitingForOperand: true,
+      operator: nextOperation
+    })
+  }
+  
+  clearAll() {
+    this.setState({
+      value: null,
+      displayValue: '0',
+      operator: null,
+      waitingForOperand: false
+    })
+  }
+
+
+
+  render() {
+
+    const { displayValue} =this.state
+
+    return (
+      <div className="calculator">
+        <div className="display" >{displayValue}</div>
+          <div className="keypad">
+            <div className="input keys">
+              <div className="function-keys">
+                <button className="clear">AC</button>
+              </div>  
+                
+              <div className="digit keys">
+              <button className="zero" onClick={()=>this.inputDigit(0)}>0</button>
+              
+              <button className="one" onClick={()=>this.inputDigit(1)}>1</button>
+              <button className="two" onClick={()=>this.inputDigit(2)}>2</button>
+              <button className="three" onClick={()=>this.inputDigit(3)}>3</button>
+              <button className="four" onClick={()=>this.inputDigit(4)}>4</button>
+              <button className="five" onClick={()=>this.inputDigit(5)}>5</button>
+              <button className="six" onClick={()=>this.inputDigit(6)}>6</button>
+              <button className="seven" onClick={()=>this.inputDigit(7)}>7</button>
+              <button className="eight" onClick={()=>this.inputDigit(8)}>8</button>
+              <button className="nine" onClick={()=>this.inputDigit(9)}>9</button>
+              </div>
+              <div className="operators">
+            <button className="plus" onClick={()=>this.performOperation('+')}>+</button>
+              <button className="subtract" onClick={()=>this.performOperation('-')}>-</button>
+              <button className="multiply" onClick={()=>this.performOperation('*')}>x</button>
+              <button className="divide" onClick={()=>this.performOperation('/')}>/</button>
+              <button className="equals" onClick={()=>this.performOperation('=')}>=</button>
+              </div>
+
+
+
+
+
+
+
+
+                
+              </div>
+        </div>
+      </div>
+    );
+  }
+
+}    
+
+
+export default App;
