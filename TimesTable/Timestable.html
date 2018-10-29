@@ -1,0 +1,27 @@
+<html>
+<script src="react.production.min.js"></script>
+<script src="react-dom.production.min.js"></script>
+<script src="TimesTable.js">  </script>
+
+<div id="QA"></div>
+
+<script>
+function inputs() {
+    var TimeInput=document.getElementById("T").value
+    var RangeInput=document.getElementById("R").value
+    var ColourInput=document.getElementById("C").value
+
+var timestable=React.createElement(TimesTablePrinting,{"T":TimeInput,"R":RangeInput,"C":ColourInput})
+ReactDOM.render(timestable, document.getElementById("QA"))
+}
+</script>
+
+
+    Times Table of<input type="number" size="40" id="T" name="T">
+    Range<input type="number" size="40" id="R" name="R">
+    Colour<input type="text" size="40" id="C" name="C">
+    <button onclick="inputs()"> click me </button>
+ 
+
+
+</html>

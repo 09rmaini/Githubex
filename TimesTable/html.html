@@ -1,0 +1,44 @@
+<html>
+<script src="react.production.min.js"></script>
+<script src="react-dom.production.min.js"></script>
+
+<div id="QA"></div>
+
+ <script> 
+
+function form() {
+    return Times() || Range() || Colour();
+
+}
+
+
+function Times() {
+    if (document.getElementById("T").value=="")
+        alert("please enter times table")
+        return false;
+}
+
+function Range() {
+    if (document.getElementById("R").value=="")
+        alert("please enter range")
+        return false;
+}
+
+
+function Colour() {
+    if (document.getElementById("C").value=="")
+        alert("please enter colour for output")
+        return false;
+}
+
+
+</script>
+
+<form id="FRM" action="submitinfo.html" onsubmit="return form()">
+    Times Table of<input type="text" size="40" id="T" name="T">
+    Range<input type="text" size="40" id="R" name="R">
+    Colour<input type="text" size="40" id="C" name="C">
+    <input type="submit" value="table">
+</form>   
+
+</html>
