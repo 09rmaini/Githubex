@@ -1,0 +1,76 @@
+<html>
+<script>
+
+ function form()
+  {
+        return username() || password() || getText() ;
+    
+    }
+
+
+ function username() 
+ {
+        
+        
+    
+        if (document.getElementById("user").value=="")
+        {
+            alert("please enter username")
+            return false;
+        }
+
+       else {
+            return true;    
+        }
+    
+
+
+ }    
+
+ function password() 
+ {
+    if (document.getElementById("pass").value=="")
+        {
+            alert("please enter password")
+            return false;
+        }
+    else {
+        return true;
+    }    
+
+
+ }    
+
+
+ function getText()
+ {
+     var username=document.getElementById("user").value
+     var password=document.getElementById("pass").value
+
+      return true;
+
+     alert(" username: " + username)
+
+     alert(" password: " + password)
+
+
+ }
+
+
+
+</script>
+
+
+<body>
+    
+    <form action="http://localhost:8250" method="POST" onsubmit="form()" >
+        username<input type="text" size="40" id="user" name="n">
+        password<input type="text" size="40" id="pass" name="ea">
+        <input type="submit" value="login">
+    </form>   
+        
+    
+</body>
+
+
+</html>

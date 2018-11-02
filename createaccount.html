@@ -1,0 +1,68 @@
+ <!-- res.write("create username: ");
+ res.write("<input type='text' id='createusername'></input>"
+ res.write("<br>");
+res.write("create password: ");
+res.write("<input type='text' id='createpassword'></input>")
+res.write("<br>");
+res.write("<button>create my account</button>" );
+ -->
+
+
+<html>
+<script>
+function form()
+  {
+        return username() || password() ;
+    
+    }
+
+
+ function username() 
+ {
+        
+        
+    
+        if (document.getElementById("uname").value=="")
+        {
+            alert("please enter username")
+            return false;
+        }
+
+       else {
+            return true;    
+        }
+    
+
+
+ }    
+
+ function password() 
+ {
+    if (document.getElementById("pword").value=="")
+        {
+            alert("please enter password")
+            return false;
+        }
+    else {
+        return true;
+    }    
+
+
+ }    
+
+</script>
+
+
+<body>
+    
+    <form action="http://localhost:8550" method="POST" onsubmit="form()">
+        create username<input type="text" size="40" id="uname" >
+        create password<input type="text" size="40" id="pword">
+        <input type="submit" value="make">
+    </form>   
+        
+    
+</body>
+
+
+</html>    
